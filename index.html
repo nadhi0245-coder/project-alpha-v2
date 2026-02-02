@@ -17,44 +17,60 @@
     overflow: hidden;
   }
 
-  /* WIDE STATIONERY RECTANGLE (700px) */
+  /* WIDE LANDSCAPE LETTER */
   .letter {
     background: #fdfaf5;
-    width: 700px; 
-    height: 850px; 
-    padding: 60px;
+    width: 850px; 
+    height: 450px; 
+    padding: 40px;
     box-shadow: 20px 20px 60px rgba(0,0,0,0.15);
     position: relative;
-    border: 1px solid #d4c5b3;
+    border: 3px solid #ff4d4d; /* Red border from reference */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 10;
-    border-radius: 2px;
+    border-radius: 15px;
   }
 
-  /* FLORAL BACKGROUND WRAP */
-  .floral-bg {
+  /* DASHED INNER BORDER */
+  .letter::before {
+    content: '';
     position: absolute;
-    width: 1000px;
-    height: 1100px;
-    background-image: url('https://www.transparentpng.com/download/floral/frame-floral-border-background-png-3.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.4;
-    z-index: 5;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 1.5px dashed #ff4d4d;
     pointer-events: none;
+    border-radius: 10px;
+  }
+
+  /* DECORATIVE HEARTS FROM REFERENCE */
+  .ref-heart-top {
+    position: absolute;
+    top: -30px;
+    left: -20px;
+    font-size: 100px;
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.2));
+    z-index: 25;
+  }
+  .ref-heart-bottom {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    font-size: 50px;
+    z-index: 25;
   }
 
   /* EDMONTON POSTMARK */
   .edmonton-postmark {
     position: absolute;
-    top: 50px;
-    right: 50px;
-    width: 110px;
-    height: 110px;
+    top: 35px;
+    right: 80px;
+    width: 80px;
+    height: 80px;
     border: 1px dashed #a39684;
     border-radius: 50%;
     display: flex;
@@ -62,28 +78,27 @@
     align-items: center;
     justify-content: center;
     color: #a39684;
-    font-size: 11px;
+    font-size: 9px;
     text-transform: uppercase;
-    transform: rotate(15deg);
-    opacity: 0.7;
+    transform: rotate(10deg);
+    opacity: 0.6;
     font-weight: bold;
-    line-height: 1.2;
   }
 
   /* RED WAX STAMP */
   .wax-stamp {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     background: radial-gradient(#c41e3a, #8b0000);
     border-radius: 50%;
     position: absolute;
     bottom: 40px;
-    right: 50px;
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+    left: 50px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 45px;
+    font-size: 35px;
     color: rgba(255,255,255,0.2);
     transform: rotate(-15deg);
     font-weight: bold;
@@ -91,47 +106,42 @@
     z-index: 20;
   }
 
-  .scene { display: none; flex-direction: column; align-items: center; text-align: center; width: 100%; }
+  .scene { display: none; flex-direction: column; align-items: center; text-align: center; width: 100%; z-index: 30; }
   .scene.active { display: flex; }
 
-  h1 { font-size: 2.8rem; color: #444; margin-bottom: 40px; font-style: italic; line-height: 1.2; }
+  h1 { font-size: 2.8rem; color: #444; margin-bottom: 30px; font-style: italic; }
 
   /* BUTTONS */
   #yes, #yesAgain {
     background: #c41e3a;
     color: white;
-    padding: 25px 90px;
-    font-size: 2.2rem;
+    padding: 15px 60px;
+    font-size: 2rem;
     border: none;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: transform 0.2s;
   }
-  #yes:hover, #yesAgain:hover { transform: scale(1.05); }
-
-  #no { background: none; border: none; color: #bbb; margin-top: 40px; cursor: pointer; text-decoration: underline; font-size: 0.9rem; }
+  #no { background: none; border: none; color: #bbb; margin-top: 20px; cursor: pointer; text-decoration: underline; font-size: 0.8rem; }
 
   /* CAT ANIMATION */
   .cats-box { 
     position: relative; 
     width: 100%; 
-    height: 120px; 
-    margin-top: 30px;
+    height: 100px; 
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .cat-walking { position: absolute; font-size: 80px; top: 0; }
+  .cat-walking { position: absolute; font-size: 70px; top: 0; }
   .left { left: 0; animation: meetLeft 5s forwards; }
   .right { right: 0; animation: meetRight 5s forwards; }
-  @keyframes meetLeft { to { left: 38%; opacity: 0; } }
-  @keyframes meetRight { to { right: 38%; opacity: 0; } }
-
-  .kiss-cats { font-size: 100px; opacity: 0; animation: showKiss 0.5s forwards 5s; }
+  @keyframes meetLeft { to { left: 35%; opacity: 0; } }
+  @keyframes meetRight { to { right: 35%; opacity: 0; } }
+  .kiss-cats { font-size: 90px; opacity: 0; animation: showKiss 0.5s forwards 5s; }
   @keyframes showKiss { to { opacity: 1; } }
 
-  /* FALLING FLOWERS & HEARTS */
-  .falling-flower {
+  /* FALLING ITEMS */
+  .falling-item {
     position: absolute;
     top: -60px;
     pointer-events: none;
@@ -151,20 +161,15 @@
   }
 
   iframe { display: none; }
-  .shake-anim { animation: shake 0.5s; }
-  @keyframes shake {
-    0% { transform: translate(1px, 1px); }
-    20% { transform: translate(-3px, 0px); }
-    100% { transform: translate(0, 0); }
-  }
 </style>
 </head>
 <body>
 
-<div class="floral-bg"></div>
-
 <div class="letter" id="letterBody">
-  <div class="edmonton-postmark">Edmonton<br>Feb 2026<br>★★★</div>
+  <div class="ref-heart-top">❤️</div>
+  <div class="ref-heart-bottom">💕</div>
+  
+  <div class="edmonton-postmark">Edmonton<br>Feb 2026</div>
 
   <div class="scene active" id="step1">
     <h1>Dear Ava,<br>Will you be my Valentine?</h1>
@@ -173,12 +178,12 @@
   </div>
 
   <div class="scene" id="step2">
-    <h1>Wait...<br>Are you 100% sure? 🥰</h1>
-    <button id="yesAgain">YES, I AM SURE!</button>
+    <h1>Wait... Are you sure? 🥰</h1>
+    <button id="yesAgain">YES, ABSOLUTELY!</button>
   </div>
 
   <div class="scene" id="yesFinal">
-    <h1 style="font-size: 3.5rem;">I love you baby ❤️</h1>
+    <h1 style="font-size: 3rem;">I love you baby ❤️</h1>
     <div class="cats-box">
       <div class="cat-walking left">🐱</div>
       <div class="cat-walking right">🐱</div>
@@ -209,8 +214,7 @@
     document.getElementById("step2").classList.remove("active");
     document.getElementById("yesFinal").classList.add("active");
     musicBox.innerHTML = `<iframe src="${ivyMusic}" allow="autoplay"></iframe>`;
-    document.getElementById("letterBody").classList.add("shake-anim");
-    setInterval(createFallingFlower, 300);
+    setInterval(createFallingItem, 300);
   };
 
   document.getElementById("no").onclick = () => {
@@ -218,13 +222,13 @@
     musicBox.innerHTML = `<iframe src="${stormSound}" allow="autoplay"></iframe>`;
   };
 
-  function createFallingFlower() {
+  function createFallingItem() {
     const items = ["💮", "🌸", "❤️"]; 
     const item = document.createElement("div");
-    item.className = "falling-flower";
+    item.className = "falling-item";
     item.innerHTML = items[Math.floor(Math.random() * items.length)];
     item.style.left = Math.random() * 100 + "vw";
-    item.style.fontSize = (Math.random() * 15 + 25) + "px"; 
+    item.style.fontSize = (Math.random() * 20 + 20) + "px"; 
     item.style.animationDuration = (Math.random() * 3 + 4) + "s";
     document.body.appendChild(item);
     setTimeout(() => item.remove(), 6000);
@@ -232,4 +236,5 @@
 </script>
 </body>
 </html>
+
 
